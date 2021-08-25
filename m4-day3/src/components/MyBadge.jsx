@@ -1,5 +1,5 @@
 
-import { Button,Form,Badge} from 'react-bootstrap'
+import { Button,Badge} from 'react-bootstrap'
 
 const MyBadge=({text,color}) =>{
     

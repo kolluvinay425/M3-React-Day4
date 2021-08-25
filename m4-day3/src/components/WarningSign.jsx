@@ -7,8 +7,8 @@ const WarningSign = ({text})=>{
         <>
         
   
-  <Navbar bg="dark">
-    <Navbar.Brand  >{text}</Navbar.Brand>
+  <Navbar  bg="dark">
+    <Navbar.Brand onClick={alert(text)} >NavBar</Navbar.Brand>
   </Navbar>
   
  
