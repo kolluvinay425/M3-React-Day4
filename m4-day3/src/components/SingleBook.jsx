@@ -3,6 +3,7 @@ import {Card,Button} from 'react-bootstrap'
 const SingleBook = ()=>{
     console.log(data)
 return(
+    
     <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="holder.js/100px180" />
   <Card.Body>
