@@ -1,4 +1,4 @@
-import Navbar from 'react-bootstrap/Navbar'
+import {Navbar} from 'react-bootstrap'
 
 
 const WarningSign = ({text})=>{
