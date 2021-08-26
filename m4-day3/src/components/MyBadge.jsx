@@ -1,15 +1,14 @@
 
 import { Button,Badge} from 'react-bootstrap'
 
-const MyBadge=({text,color}) =>{
+const MyBadge=(props) =>{
     
     
         return (
             <div className="text-center">
-                <h2>Make A Badge :)</h2>
-                <Button variant={color}>
-                     {text} <Badge variant={color}></Badge>
-                    <span className="sr-only">unread messages</span>
+                <Button variant='primary'>
+                {props.text}  <Badge variant={props.color}>9</Badge>
+                    <span className="sr-only">{props.text}</span>
                 </Button>
             </div>
         )

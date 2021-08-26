@@ -1,15 +1,19 @@
 
-import {Navbar} from 'react-bootstrap'
+import {Navbar,Alert} from 'react-bootstrap'
 
 
-const WarningSign = ({text})=>{
+const WarningSign = (props)=>{
     return(
         <>
         
   
   <Navbar  bg="dark">
-    <Navbar.Brand onClick={alert(text)} >NavBar</Navbar.Brand>
+    <Navbar.Brand >NavBar</Navbar.Brand>
   </Navbar>
+  <Alert variant ='danger'>
+        {props.text}
+  </Alert>
+
   
  
    

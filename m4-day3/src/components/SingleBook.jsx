@@ -1,16 +1,18 @@
-import data from '../data/menu.json'
-import {Card,Button,Col,Row} from 'react-bootstrap'
-const SingleBook = ()=>{
-    console.log(data)
+
+import {Card,Button,Col,Row,Container} from 'react-bootstrap'
+
+const SingleBook = (props)=>{
+    
 return(
     
-    data.map(a=>(
-       
-        <Col>
+    (
+        <Container>
+            <Row>
+           <Col lg={12} className='justify-content-center'>
         <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={a.img} />
+        <Card.Img variant="top" src={props.book.img} />
         <Card.Body>
-          <Card.Title>{a.title}</Card.Title>
+          <Card.Title>{props.book.title}</Card.Title>
           <Card.Text>
             
           </Card.Text>
@@ -18,11 +20,13 @@ return(
         </Card.Body>
       </Card>
       </Col>
+       </Row>
+        </Container>
+       
+        
     
     )
     )
-   
-)
     
 }
 export default SingleBook
