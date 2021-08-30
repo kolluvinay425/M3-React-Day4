@@ -1,13 +1,13 @@
 
 import {Card,Button,Col,Row,Container} from 'react-bootstrap'
 const BookList = (props)=>
-    
-  (
+
+
+    (
       <Container>
         <Row className='m-3 b-2 m-4' >
           {
             props.books.map(book=>(
-              
        
               <Col lg={4}>
               <Card style={{ width: '18rem' }}>
@@ -21,16 +21,14 @@ const BookList = (props)=>
               </Card.Body>
             </Card>
             </Col>
-            
-          
-          )
-          )
+          ))
           }
         </Row>
       </Container>
   )
+  
     
-    
+  
    
 
     
