@@ -1,24 +1,35 @@
 import { Modal, Button, Form } from "react-bootstrap";
-import { Component } from "react";
+import { useState } from "react";
 import AddComment from "./AddComment";
-class CommentList extends Component {
-  state = {
-    newComment: {
-      comment: "",
-      rate: 1,
-      elementId: this.props.elementId,
-    },
-  };
-
-  sendComment = async (e) => {
+const CommentList = (props) => {
+  // state = {
+  //   newComment: {
+  //     comment: "",
+  //     rate: 1,
+  //     elementId: this.props.elementId,
+  //   },
+  // };
+  const [newComment, setNewComment] = useState({
+    comment: "",
+    rate: 1,
+    elementId: props.elementId,
+  });
+  const sendComment = async (e) => {
+    // let response = await fetch('https://striveschool-api.herokuapp.com/api/agenda/', {
+    // method: 'POST',
+    // body: JSON.stringify(myObject),
+    // headers: new Headers({
+    //     'Content-Type': 'application/json'
+    // })
+    // })
     e.preventDefault();
     try {
       const response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" +
-          this.props.elementId,
+          props.elementId,
         {
           method: "POST",
-          body: JSON.stringify(this.state.newComment),
+          body: JSON.stringify(newComment),
           headers: {
             "Content-Type": "application/json",
             Authorization:
@@ -36,74 +47,65 @@ class CommentList extends Component {
       console.log(error);
     }
   };
-  render() {
-    return (
-      <>
+
+  return (
+    <>
+      <Modal.Dialog>
         <Modal.Dialog>
-          <Modal.Dialog>
-            <Modal.Header closeButton>
-              <Modal.Title>comments</Modal.Title>
-            </Modal.Header>
+          <Modal.Header closeButton>
+            <Modal.Title>comments</Modal.Title>
+          </Modal.Header>
 
-            <Modal.Body>
-              {this.props.showComments?.map((comment) => (
-                <li key={comment.comment}>
-                  {comment.comment}--Rating:{comment.rate}
-                </li>
-              ))}
-            </Modal.Body>
+          <Modal.Body>
+            {props.showComments.map((comment) => (
+              <li key={comment.comment}>
+                {comment.comment}--Rating:{comment.rate}
+              </li>
+            ))}
+          </Modal.Body>
 
-            <Modal.Footer>
-              <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter your comment"
-                    value={this.state.newComment.comment}
-                    onChange={(e) =>
-                      this.setState({
-                        newComment: {
-                          ...this.state.newComment,
-                          comment: e.target.value,
-                        },
-                      })
-                    }
-                  />
-                  <Form.Control
-                    as="select"
-                    value={this.state.newComment.rate}
-                    onChange={(e) =>
-                      this.setState({
-                        newComment: {
-                          ...this.state.newComment,
-                          rate: e.target.value,
-                        },
-                      })
-                    }
-                  >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </Form.Control>
-                </Form.Group>
-
-                <Button
-                  onClick={this.sendComment}
-                  variant="primary"
-                  type="submit"
+          <Modal.Footer>
+            <Form>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Control
+                  type="text"
+                  placeholder="Enter your comment"
+                  value={newComment.comment}
+                  onChange={(e) =>
+                    setNewComment({
+                      ...newComment,
+                      comment: e.target.value,
+                    })
+                  }
+                />
+                <Form.Control
+                  as="select"
+                  value={newComment.rate}
+                  onChange={(e) =>
+                    setNewComment({
+                      ...newComment,
+                      rate: e.target.value,
+                    })
+                  }
                 >
-                  Submit
-                </Button>
-              </Form>
-            </Modal.Footer>
-          </Modal.Dialog>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Form.Control>
+              </Form.Group>
+
+              <Button onClick={sendComment} variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </Modal.Footer>
         </Modal.Dialog>
-        {this.state.newComment && <AddComment />}
-      </>
-    );
-  }
-}
+      </Modal.Dialog>
+      {newComment && <AddComment />}
+    </>
+  );
+};
 
 export default CommentList;
