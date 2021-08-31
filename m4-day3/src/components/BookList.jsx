@@ -3,7 +3,6 @@ import SingleBook from "./SingleBook";
 import { Col, Row, Container, Form, FormControl } from "react-bootstrap";
 class BookList extends Component {
   state = {
-    selected: false,
     query: "",
   };
   render() {
@@ -27,7 +26,7 @@ class BookList extends Component {
               book.title.toLowerCase().includes(this.state.query)
             )
             .map((book) => (
-              <Col lg={4}>
+              <Col lg={4} key={book.asin}>
                 <SingleBook book={book} />
               </Col>
             ))}

@@ -11,7 +11,6 @@ class SingleBook extends Component {
         <Row>
           <Col lg={12} className="justify-content-center">
             <Card
-              style={{ width: "10rem" }}
               onClick={() => this.setState({ selected: !this.state.selected })}
               style={{ border: this.state.selected ? "3px solid red" : "none" }}
             >
