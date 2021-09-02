@@ -28,11 +28,7 @@ const CommentArea = ({ asin }) => {
     fetchComments();
   }, []);
 
-  return (
-    <>
-      <CommentList elementId={asin} showComments={comments} />
-    </>
-  );
+  return <>{<CommentList elementId={asin} showComments={comments} />}</>;
 };
 
 export default CommentArea;

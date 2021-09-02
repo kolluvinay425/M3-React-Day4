@@ -11,7 +11,7 @@ const CommentList = (props) => {
   // };
   const [newComment, setNewComment] = useState({
     comment: "",
-    rate: 1,
+    rate: "rate this book",
     elementId: props.elementId,
   });
   const sendComment = async (e) => {
@@ -25,8 +25,7 @@ const CommentList = (props) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" +
-          props.elementId,
+        "https://striveschool-api.herokuapp.com/api/comments",
         {
           method: "POST",
           body: JSON.stringify(newComment),
@@ -88,6 +87,8 @@ const CommentList = (props) => {
                     })
                   }
                 >
+                  <br />
+                  <option>rate this book</option>
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
